@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el número</title>
+    
+
+</head>
+
+<body>
+    <center>
+        <div id="caja">
+
+            <h1>ADIVINA EL NÚMERO</h1>
+            <p>Estoy pensando un numero entre el 1 y el 100... tienes que adivinarlo :)</p>
+            <h2 id="resultado">....::::::.....::::::.....::::::.....::::::.....</h2>
+            <input id="number" type="number">
+            <button id="botonIntento" onclick="intento()">INTENTO</button>
+            <h3 id="resultado2">Llevas 0 intentos</h3>
+            <script>
+                let numeroAzar = Math.floor(Math.random() * 100);
+                let numeroIntentos = 0;
+
+                function intento() {
+                    if (numeroIntentos < 10) {
+                        let numeroIntroducido = document.getElementById("number").value;
+                        let resultado = document.getElementById("resultado");
+                        let resultado2 = document.getElementById("resultado2");
+                        console.log(numeroIntroducido);
+                        console.log(numeroAzar);
+                        console.log(resultado);
+
+                        if (numeroIntroducido == numeroAzar) {
+                            resultado.innerText = "Has acertado el numero: " + numeroAzar;
+
+                        } else if (numeroIntroducido > numeroAzar) {
+                            resultado.innerText = "Te has pasado, ese es más alto ";
+                            numeroIntentos++;
+                        } else if (numeroIntroducido < numeroAzar) {
+                            resultado.innerText = "Te has quedado por debajo del número secreto ";
+                            numeroIntentos++;
+                        }
+
+                    } else {
+                        resultado.innerText = "Has alcanzado el máximo de 10 intentos :´(";
+
+                    }
+                    resultado2.innerText = "Llevas " + numeroIntentos + " intentos.";
+
+
+                }
+
+            </script>
+        </div>
+        
+    </center>
+</body>
+
+</html>
